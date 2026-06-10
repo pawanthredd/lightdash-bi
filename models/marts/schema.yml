@@ -1,8 +1,84 @@
+version: 2
+
 models:
   - name: dim_clients
+    description: "Client dimension containing customer profile and demographic information."
+
     columns:
       - name: client_id
+        description: "Unique identifier for a client."
+
       - name: client_name
+        description: "Name of the client."
+
       - name: country
+        description: "Country where the client is registered."
+
       - name: signup_date
-      - name: annual_revenue
+        description: "Date when the client first registered."
+
+      - name: annual_income
+        description: "Annual income associated with the client."
+
+  - name: dim_cards
+    description: "Card dimension containing card ownership and lifecycle information."
+
+    columns:
+      - name: card_id
+        description: "Unique identifier for a payment card."
+
+      - name: client_id
+        description: "Identifier of the client who owns the card."
+
+      - name: card_type
+        description: "Type of card such as VISA, Mastercard, or AMEX."
+
+      - name: card_status
+        description: "Current status of the card, for example ACTIVE or BLOCKED."
+
+      - name: issued_date
+        description: "Date when the card was issued."
+
+  - name: fct_authorisations
+    description: "Fact table containing payment authorisation requests submitted by cards."
+
+    columns:
+      - name: authorisation_id
+        description: "Unique identifier for an authorisation event."
+
+      - name: card_id
+        description: "Identifier of the card used for the authorisation."
+
+      - name: auth_amount
+        description: "Requested amount for the authorisation."
+
+      - name: merchant_name
+        description: "Merchant where the authorisation was initiated."
+
+      - name: auth_timestamp
+        description: "Timestamp when the authorisation occurred."
+
+      - name: auth_status
+        description: "Outcome of the authorisation such as APPROVED, DECLINED, or REVIEW."
+
+  - name: fct_transactions
+    description: "Fact table containing financial transaction events linked to authorisations."
+
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for a transaction."
+
+      - name: authorisation_id
+        description: "Associated authorisation identifier for the transaction."
+
+      - name: card_id
+        description: "Identifier of the card used for the transaction."
+
+      - name: transaction_amount
+        description: "Monetary value of the transaction."
+
+      - name: transaction_timestamp
+        description: "Timestamp when the transaction was processed."
+
+      - name: transaction_status
+        description: "Current status of the transaction such as SETTLED, REFUNDED, FAILED, or CHARGEBACK."

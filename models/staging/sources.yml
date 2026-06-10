@@ -6,3 +6,6 @@ sources:
 
     tables:
       - name: clients
+      - name: cards
+      - name: authorisations
+      - name: transactions

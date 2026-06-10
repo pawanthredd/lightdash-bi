@@ -3,5 +3,5 @@ SELECT
     client_name,
     country,
     signup_date,
-    annual_revenue
+    annual_income
 FROM {{ source('raw', 'clients') }}
