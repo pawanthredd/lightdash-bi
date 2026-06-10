@@ -1,0 +1,8 @@
+models:
+  - name: dim_clients
+    columns:
+      - name: client_id
+      - name: client_name
+      - name: country
+      - name: signup_date
+      - name: annual_revenue
