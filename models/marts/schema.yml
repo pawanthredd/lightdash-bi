@@ -10,6 +10,11 @@ models:
           type: count_distinct
           sql: client_id
           label: Total Clients
+        
+        average_income:
+          type: average
+          sql: annual_income
+          label: Average Income
 
     columns:
       - name: client_id
