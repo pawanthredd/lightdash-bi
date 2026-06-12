@@ -4,15 +4,16 @@ models:
   - name: dim_clients
     description: "Client dimension containing customer profile and demographic information."
 
+    meta:
+      metrics:
+        total_clients:
+          type: count_distinct
+          sql: client_id
+          label: Total Clients
+
     columns:
       - name: client_id
         description: "Unique identifier for a client."
-
-        meta:
-          metrics:
-            total_clients:
-              type: count_distinct
-              label: Total clients
       - name: client_name
         description: "Name of the client."
       - name: country
