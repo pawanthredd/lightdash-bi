@@ -3,6 +3,12 @@ version: 2
 models:
   - name: dim_clients
     description: "Client dimension containing customer profile and demographic information."
+
+    metrics:
+      - name: total_cards
+        label: Total Cards
+        type: count
+        
     columns:
       - name: client_id
         description: "Unique identifier for a client."
