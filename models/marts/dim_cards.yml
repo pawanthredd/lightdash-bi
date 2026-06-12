@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: dim_cards
+
+    metrics:
+      - name: total_cards
+        label: Total Cards
+        type: count
+  
