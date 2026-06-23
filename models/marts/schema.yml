@@ -3,23 +3,15 @@ version: 2
 models:
   - name: dim_clients
     description: "Client dimension containing customer profile and demographic information."
-
-    meta:
-      metrics:
-        total_clients:
-          type: count_distinct
-          sql: client_id
-          label: Total Clients
-          tags: ['include']
-        
-        average_income:
-          type: average
-          sql: annual_income
-          label: Average Income
-
     columns:
       - name: client_id
         description: "Unique identifier for a client."
+        config:
+          meta:
+            metrics:
+              total_clients:
+                type: count_distinct
+                tags: ['include']
       - name: client_name
         description: "Name of the client."
       - name: country
@@ -28,6 +20,13 @@ models:
         description: "Date when the client first registered."
       - name: annual_income
         description: "Annual income associated with the client."
+        config:
+          meta:
+            metrics:
+              average_income:
+                type: average
+              total_income:
+                type: sum
 
   - name: dim_cards
     description: "Card dimension containing card ownership and lifecycle information."
