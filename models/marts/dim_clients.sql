@@ -1,3 +1,9 @@
+{{ 
+    config(
+        tags= 'include'
+    )
+}}
+
 SELECT 
     client_id,
     client_name,
