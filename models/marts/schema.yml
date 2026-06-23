@@ -10,6 +10,7 @@ models:
           type: count_distinct
           sql: client_id
           label: Total Clients
+          tags: ['include']
         
         average_income:
           type: average
