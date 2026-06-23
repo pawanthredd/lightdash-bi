@@ -1,8 +1,3 @@
-{{ 
-    config(
-        tags= 'include'
-    )
-}}
 SELECT 
     card_id,
     client_id,
