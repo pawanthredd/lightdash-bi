@@ -15,6 +15,7 @@ models:
           type: average
           sql: annual_income
           label: Average Income
+          
 
     columns:
       - name: client_id
