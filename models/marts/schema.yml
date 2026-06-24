@@ -4,7 +4,6 @@ models:
   - name: dim_clients
     description: "Client dimension containing customer profile and demographic information."
     config:
-      tags: ['ai']
     columns:
       - name: client_id
         description: "Unique identifier for a client."
