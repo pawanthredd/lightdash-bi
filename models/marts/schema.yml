@@ -7,7 +7,6 @@ models:
       - name: client_id
         description: "Unique identifier for a client."
         config:
-          tags: ['ai']
           meta:
             metrics:
               total_clients:
@@ -22,7 +21,6 @@ models:
       - name: annual_income
         description: "Annual income associated with the client."
         config:
-          tags: ['non-ai']
           meta:
             metrics:
               average_income:
