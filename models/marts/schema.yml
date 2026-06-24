@@ -11,7 +11,6 @@ models:
             metrics:
               total_clients:
                 type: count_distinct
-                tags: ['ai']
       - name: client_name
         description: "Name of the client."
       - name: country
@@ -25,10 +24,8 @@ models:
             metrics:
               average_income:
                 type: average
-                tags: ['non-ai']
               total_income:
                 type: sum
-                tags: ['non-ai']
 
   - name: dim_cards
     description: "Card dimension containing card ownership and lifecycle information."
