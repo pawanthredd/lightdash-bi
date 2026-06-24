@@ -7,12 +7,12 @@ models:
       - name: client_id
         description: "Unique identifier for a client."
         config:
-          tags: ['include']
+          tags: ['ai']
           meta:
             metrics:
               total_clients:
                 type: count_distinct
-                tags: ['include']
+                tags: ['ai']
       - name: client_name
         description: "Name of the client."
       - name: country
@@ -22,12 +22,15 @@ models:
       - name: annual_income
         description: "Annual income associated with the client."
         config:
+          tags: ['non-ai']
           meta:
             metrics:
               average_income:
                 type: average
+                tags: ['non-ai']
               total_income:
                 type: sum
+                tags: ['non-ai']
 
   - name: dim_cards
     description: "Card dimension containing card ownership and lifecycle information."
