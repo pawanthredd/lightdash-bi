@@ -3,7 +3,6 @@ version: 2
 models:
   - name: dim_clients
     description: "Client dimension containing customer profile and demographic information."
-    config:
     columns:
       - name: client_id
         description: "Unique identifier for a client."
