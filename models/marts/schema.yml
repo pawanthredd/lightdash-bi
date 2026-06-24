@@ -17,7 +17,7 @@ models:
         config:
           meta:
             dimension:
-              tags: ['ai']
+              tags: ['exclude']
       - name: country
         description: "Country where the client is registered."
         config:
