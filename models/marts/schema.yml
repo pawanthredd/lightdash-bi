@@ -8,35 +8,39 @@ models:
         description: "Unique identifier for a client."
         config:
           meta:
-            tags: ['exclude']
             metrics:
               total_clients:
                 type: count_distinct
+                tags: ['exclude']
       - name: client_name
         description: "Name of the client."
         config:
           meta:
-            tags: ['ai']
+            dimension:
+              tags: ['ai']
       - name: country
         description: "Country where the client is registered."
         config:
           meta:
-            tags: ['ai']
+            dimension:
+              tags: ['ai']
       - name: signup_date
         description: "Date when the client first registered."
         config:
           meta:
-            tags: ['ai']
+            dimension:
+              tags: ['ai']
       - name: annual_income
         description: "Annual income associated with the client."
         config:        
           meta:
-            tags: ['exclude']
             metrics:
               average_income:
                 type: average
+                tags: ['exclude']
               total_income:
                 type: sum
+                tags: ['exclude']
 
   - name: dim_cards
     description: "Card dimension containing card ownership and lifecycle information."
