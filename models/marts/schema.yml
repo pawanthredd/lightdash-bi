@@ -8,6 +8,8 @@ models:
         description: "Unique identifier for a client."
         config:
           meta:
+            dimension:
+              tags: ['exclude']
             metrics:
               total_clients:
                 type: count_distinct
@@ -34,6 +36,7 @@ models:
         description: "Annual income associated with the client."
         config:        
           meta:
+            dimension: ['exclude']
             metrics:
               average_income:
                 type: average
