@@ -14,14 +14,24 @@ models:
                 type: count_distinct
       - name: client_name
         description: "Name of the client."
-      - name: country
-        description: "Country where the client is registered."
-      - name: signup_date
-        description: "Date when the client first registered."
-      - name: annual_income
-        description: "Annual income associated with the client."
         config:
           meta:
+            tags: ['ai']
+      - name: country
+        description: "Country where the client is registered."
+        config:
+          meta:
+            tags: ['ai']
+      - name: signup_date
+        description: "Date when the client first registered."
+        config:
+          meta:
+            tags: ['ai']
+      - name: annual_income
+        description: "Annual income associated with the client."
+        config:        
+          meta:
+            tags: ['exclude']
             metrics:
               average_income:
                 type: average
