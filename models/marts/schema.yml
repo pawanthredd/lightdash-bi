@@ -7,6 +7,7 @@ models:
       - name: client_id
         description: "Unique identifier for a client."
         config:
+          tags: ['include']
           meta:
             metrics:
               total_clients:
