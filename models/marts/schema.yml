@@ -6,6 +6,11 @@ models:
     columns:
       - name: client_id
         description: "Unique identifier for a client."
+        config:
+          meta:
+            metrics:
+              total_clients:
+                type: count_distinct
       - name: client_name
         description: "Name of the client."
       - name: country
@@ -14,12 +19,22 @@ models:
         description: "Date when the client first registered."
       - name: annual_income
         description: "Annual income associated with the client."
+        config:
+          meta:
+            metrics:
+              average_income:
+                type: average
 
   - name: dim_cards
     description: "Card dimension containing card ownership and lifecycle information."
     columns:
       - name: card_id
         description: "Unique identifier for a payment card."
+        config:
+          meta:
+            metrics:
+              card_count:
+                type: count_distinct
       - name: client_id
         description: "Identifier of the client who owns the card."
       - name: card_type
@@ -56,6 +71,13 @@ models:
         description: "Identifier of the card used for the transaction."
       - name: transaction_amount
         description: "Monetary value of the transaction."
+        config:
+          meta:
+            metrics:
+              average_transaction_amount:
+                type: average
+              total_transaction_amount:
+                type: sum
       - name: transaction_timestamp
         description: "Timestamp when the transaction was processed."
       - name: transaction_status
