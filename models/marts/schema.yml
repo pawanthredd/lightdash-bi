@@ -5,7 +5,7 @@ models:
     description: "Client dimension containing customer profile and demographic information."
     config:
       meta:
-        sql_filter: ${lightdash.attribute.india_data}
+        sql_filter: ${TABLE}.country =  ${lightdash.attribute.india_data}
     columns:
       - name: client_id
         description: "Unique identifier for a client."
