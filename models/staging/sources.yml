@@ -5,7 +5,10 @@ sources:
     schema: raw_data
 
     tables:
-      - name: clients
+      - name: bin_sponsor
+      - name: program_manager
+      - name: products
       - name: cards
       - name: authorisations
       - name: transactions
+      

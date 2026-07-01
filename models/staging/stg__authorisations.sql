@@ -1,0 +1,20 @@
+SELECT
+    authorisation_id,
+    card_id,
+    customer_id,
+    merchant_id,
+    authorisation_date,
+    authorisation_timestamp,
+    merchant_category,
+    country,
+    currency,
+    amount,
+    response_code,
+    approved_flag,
+    decline_reason,
+    fraud_score,
+    channel,
+    entry_mode,
+    device_type,
+    created_at
+FROM {{ source('raw', 'authorisations') }}
