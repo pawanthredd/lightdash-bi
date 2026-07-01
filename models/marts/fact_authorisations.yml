@@ -2,7 +2,7 @@ version: 2
 
 models:
 
-  - name: fct_authorisations
+  - name: fact_authorisations
 
     description: >
       Fact table containing all card authorization attempts processed by the

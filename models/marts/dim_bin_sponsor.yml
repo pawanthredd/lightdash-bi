@@ -25,19 +25,19 @@ models:
             type: inner
             sql_on: ${dim_products.product_id} = ${dim_cards.product_id}
           
-          - join: fct_authorisations
+          - join: fact_authorisations
             type: inner
-            sql_on: ${dim_cards.card_id} = ${fct_authorisations.card_id}
+            sql_on: ${dim_cards.card_id} = ${fact_authorisations.card_id}
           
-          - join: fct_transactions
+          - join: fact_transactions
             type: inner
             alias: card_transaction
-            sql_on: ${dim_cards.card_id} = ${fct_transactions.card_id}
+            sql_on: ${dim_cards.card_id} = ${fact_transactions.card_id}
           
-          - join: fct_transactions
+          - join: fact_transactions
             type: inner
             alias: authorisation_transaction
-            sql_on: ${fct_authorisations.authorisation_id} = ${fct_transactions.authorisation_id}
+            sql_on: ${fact_authorisations.authorisation_id} = ${fact_transactions.authorisation_id}
 
     columns:
       - name: bin_sponsor_id
