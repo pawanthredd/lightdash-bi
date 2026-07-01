@@ -16,10 +16,38 @@ models:
           - join: dim_program_manager
             type: inner
             sql_on: ${dim_bin_sponsor.bin_sponsor_id} = ${dim_program_manager.bin_sponsor_id}
+          
+          - join: dim_products
+            type: inner
+            sql_on: ${dim_program_manager.program_manager_id} = ${dim_products.program_manager_id}
+          
+          - join: dim_cards
+            type: inner
+            sql_on: ${dim_products.product_id} = ${dim_cards.product_id}
+          
+          - join: fct_authorisations
+            type: inner
+            sql_on: ${dim_cards.card_id} = ${fct_authorisations.card_id}
+          
+          - join: fct_transactions
+            type: inner
+            alias: card_transaction
+            sql_on: ${dim_cards.card_id} = ${fct_transactions.card_id}
+          
+          - join: fct_transactions
+            type: inner
+            alias: authorisation_transaction
+            sql_on: ${fct_authorisations.authorisation_id} = ${fct_transactions.authorisation_id}
 
     columns:
       - name: bin_sponsor_id
         description: Unique identifier for the BIN Sponsor.
+        config:
+          meta:
+            metrics:
+              total_bin_sponsors:
+                label: Total BIN Sponsors
+                type: count_distinct
 
       - name: sponsor_name
         description: Official name of the BIN Sponsor organization.
@@ -41,6 +69,18 @@ models:
 
       - name: annual_fee
         description: Annual platform or sponsorship fee charged to the BIN Sponsor.
+        config:
+          meta:
+            metrics:
+              total_annual_fee:
+                label: Total Annual Fee
+                description: Total annual fees collected from BIN Sponsors.
+                type: sum
+              
+              average_annual_fee:
+                label: Average Annual Fee
+                description: Average annual fee charged to BIN Sponsors.
+                type: average
 
       - name: active_flag
         description: Indicates whether the BIN Sponsor is currently active on the platform.

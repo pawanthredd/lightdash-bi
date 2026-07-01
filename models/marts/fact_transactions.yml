@@ -1,72 +1,289 @@
 version: 2
 
 models:
-  - name: fact_transactions
+
+  - name: fct_transactions
+
     description: >
-      Fact table containing all settled financial transactions resulting from
-      approved card authorizations. Each record represents a completed financial
-      transaction and includes settlement information, transaction amounts,
-      revenue components, processing fees, and profitability metrics. This table
-      is the primary fact table for financial reporting, issuer revenue analysis,
-      forecasting, and transaction performance dashboards.
+      Fact table containing completed financial transactions processed by the
+      issuer platform. Each record represents a settled transaction resulting
+      from an approved authorization. This table includes transaction amounts,
+      settlement values, merchant details, revenue components, fees, and
+      profitability metrics used for financial reporting, forecasting,
+      transaction analytics, and issuer performance dashboards.
+
 
     columns:
+
+
       - name: transaction_id
+
         description: Unique identifier for the financial transaction.
 
+        config:
+          meta:
+            metrics:
+
+
+              total_transactions:
+                label: Total Transactions
+                description: Count of unique financial transactions.
+                type: count_distinct
+
+
+
+              settled_transactions:
+                label: Settled Transactions
+                description: Count of transactions successfully settled.
+                type: count_distinct
+
+                filters:
+
+                  - transaction_status: SETTLED
+
+
+
+
       - name: authorisation_id
-        description: Foreign key referencing the authorization from which the transaction originated.
+
+        description: Identifier of the authorization associated with the transaction.
+
+
+
 
       - name: card_id
-        description: Foreign key referencing the payment card used for the transaction.
+
+        description: Identifier of the card used for the transaction.
+
+        config:
+          meta:
+            metrics:
+
+
+              active_transaction_cards:
+                label: Active Transaction Cards
+                description: Number of unique cards with transactions.
+                type: count_distinct
+
+
+
 
       - name: customer_id
-        description: Unique identifier for the customer who performed the transaction.
+
+        description: Identifier of the customer who performed the transaction.
+
+        config:
+          meta:
+            metrics:
+
+
+              transacting_customers:
+                label: Transacting Customers
+                description: Number of unique customers performing transactions.
+                type: count_distinct
+
+
+
 
       - name: merchant_id
-        description: Identifier of the merchant where the transaction occurred.
+
+        description: Identifier of the merchant where transaction occurred.
+
+
+
 
       - name: transaction_date
-        description: Date on which the transaction was authorized.
+
+        description: Date when the transaction occurred.
+
+
+
 
       - name: settlement_date
-        description: Date on which the transaction was settled with the payment network.
+
+        description: Date when the transaction was settled.
+
+
+
 
       - name: merchant_category
-        description: Merchant Category Code (MCC) grouping or business category of the merchant, such as Grocery, Retail, Travel, or Electronics.
+
+        description: Merchant category where transaction occurred.
+
+
+
 
       - name: country
-        description: Country where the transaction took place.
+
+        description: Country where transaction occurred.
+
+
+
 
       - name: currency
-        description: Currency in which the transaction was processed.
+
+        description: Transaction currency.
+
+
+
 
       - name: transaction_amount
-        description: Original monetary amount of the transaction.
+
+        description: Original transaction amount before settlement.
+
+        config:
+          meta:
+            metrics:
+
+
+              total_transaction_volume:
+                label: Total Transaction Volume
+                description: Total value of all transactions.
+                type: sum
+
+
+
+              average_transaction_amount:
+                label: Average Transaction Amount
+                description: Average transaction value.
+                type: average
+
+
+
 
       - name: settlement_amount
+
         description: Final amount settled after transaction processing.
 
+        config:
+          meta:
+            metrics:
+
+
+              total_settlement_volume:
+                label: Total Settlement Volume
+                description: Total settled transaction value.
+                type: sum
+
+
+
+
       - name: transaction_status
-        description: Current settlement status of the transaction, such as Settled, Reversed, or Pending.
+
+        description: Current status of the transaction such as SETTLED, REVERSED, or PENDING.
+
+
+
 
       - name: interchange_rate
-        description: Percentage interchange rate applied to calculate interchange revenue.
+
+        description: Interchange percentage applied to the transaction.
+
+        config:
+          meta:
+            metrics:
+
+
+              average_interchange_rate:
+                label: Average Interchange Rate
+                description: Average interchange rate applied across transactions.
+                type: average
+
+
+
 
       - name: interchange_revenue
-        description: Revenue earned from interchange fees for processing the transaction.
+
+        description: Revenue earned from interchange fees.
+
+        config:
+          meta:
+            metrics:
+
+
+              total_interchange_revenue:
+                label: Total Interchange Revenue
+                description: Total interchange revenue generated.
+                type: sum
+
+
+
 
       - name: processor_fee
-        description: Processing fee charged by the payment processor for handling the transaction.
+
+        description: Processing fee charged by the payment processor.
+
+        config:
+          meta:
+            metrics:
+
+
+              total_processor_fees:
+                label: Total Processor Fees
+                description: Total fees paid to payment processors.
+                type: sum
+
+
+
 
       - name: fx_fee
-        description: Foreign exchange fee charged for cross-border or multi-currency transactions.
+
+        description: Foreign exchange fees generated from applicable transactions.
+
+        config:
+          meta:
+            metrics:
+
+
+              total_fx_revenue:
+                label: Total FX Revenue
+                description: Total foreign exchange fee revenue generated.
+                type: sum
+
+
+
 
       - name: issuer_revenue
-        description: Total gross revenue earned by the issuer from the transaction before deducting processing costs.
+
+        description: Gross revenue earned by the issuer before costs.
+
+        config:
+          meta:
+            metrics:
+
+
+              total_issuer_revenue:
+                label: Total Issuer Revenue
+                description: Total gross issuer revenue generated.
+                type: sum
+
+
+
 
       - name: net_revenue
-        description: Net revenue earned from the transaction after deducting processor fees and incorporating applicable revenue components.
+
+        description: Net revenue after processor costs and applicable fees.
+
+        config:
+          meta:
+            metrics:
+
+
+              total_net_revenue:
+                label: Total Net Revenue
+                description: Total profit contribution from transactions.
+                type: sum
+
+
+
+              average_net_revenue:
+                label: Average Net Revenue
+                description: Average net revenue per transaction.
+                type: average
+
+
+
 
       - name: created_at
-        description: Timestamp when the transaction record was created in the source system.
+
+        description: Timestamp when transaction record was created.
