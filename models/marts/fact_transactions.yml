@@ -2,7 +2,7 @@ version: 2
 
 models:
 
-  - name: fct_transactions
+  - name: fact_transactions
 
     description: >
       Fact table containing completed financial transactions processed by the
