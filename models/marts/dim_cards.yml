@@ -8,6 +8,17 @@ models:
       customer. The table includes card lifecycle information, customer
       demographics, credit attributes, wallet adoption, KYC status, and risk
       indicators used for issuer analytics and reporting.
+    
+    config:
+      meta:
+        primary_key: card_id
+        joins:
+          - join: fact_authorisations
+            type: inner
+            sql_on: ${dim_cards.card_id} = ${fact_authorisations.card_id}
+          - join: fact_transactions
+            type: inner
+            sql_on: ${dim_cards.card_id} = ${fact_transactions.card_id}
 
     columns:
       - name: card_id

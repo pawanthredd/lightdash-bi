@@ -9,6 +9,14 @@ models:
       supported currency, geographic market, pricing, and interchange rates.
       This table is used to analyze product performance, revenue, card issuance,
       and portfolio composition.
+    
+    config:
+      meta:
+        primary_key: product_id
+        joins:
+          - join: dim_cards
+            type: inner
+            sql_on: ${dim_products.product_id} = ${dim_cards.product_id}
 
     columns:
       - name: product_id

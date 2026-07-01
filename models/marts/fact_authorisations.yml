@@ -10,6 +10,14 @@ models:
       fraud indicators, and payment channel attributes. This model is used
       to analyze authorization volumes, approval rates, fraud trends,
       merchant performance, and customer transaction behavior.
+    
+    config:
+      meta:
+        primary_key: authorisation_id
+        joins:
+          - join: fact_transactions
+            type: inner
+            sql_on: ${fact_authorisations.authorisation_id} = ${fact_transactions.authorisation_id}
 
     columns:
       - name: authorisation_id
