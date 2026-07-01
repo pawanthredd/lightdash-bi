@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: banks
+  - name: dim_banks
     description: "Reference table containing bank information, sponsor names, country, and status."
 
     columns:
