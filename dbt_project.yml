@@ -45,3 +45,4 @@ models:
     marts:
       +materialized: table
       +schema: marts
+      +tags: ['bi']
