@@ -11,4 +11,5 @@ sources:
       - name: cards
       - name: authorisations
       - name: transactions
+      - name: banks
       
