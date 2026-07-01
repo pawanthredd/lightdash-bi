@@ -3,6 +3,9 @@ version: 2
 models:
   - name: dim_banks
     description: "Reference table containing bank information, sponsor names, country, and status."
+    config:
+      meta:
+        sql_filter: ${TABLE}.bank_name = ${lightdash.attributes.bank_name}
 
     columns:
       - name: bank_id
