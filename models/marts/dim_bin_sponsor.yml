@@ -12,7 +12,6 @@ models:
     config:
       meta:
         primary_key: bin_sponsor_id
-        sql_filter: ${TABLE}.sponsor_name = ${lightdash.attributes.sponsor_name}
         joins:
           - join: dim_program_manager
             type: inner
