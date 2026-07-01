@@ -5,55 +5,94 @@ models:
     description: >
       Dimension table containing payment card product information offered by
       Program Managers. Each record represents a unique card product and
-      includes details such as product type, card network, card category,
-      supported currency, geographic market, pricing, and interchange rates.
-      This table is used to analyze product performance, revenue, card issuance,
-      and portfolio composition.
-    
-    config:
-      meta:
-        primary_key: product_id
-        joins:
-          - join: dim_cards
-            type: inner
-            sql_on: ${dim_products.product_id} = ${dim_cards.product_id}
+      includes product type, card network, pricing, currency, geography,
+      interchange configuration, and lifecycle information.
 
     columns:
+
       - name: product_id
-        description: Unique identifier for the payment card product.
+        description: Unique identifier for the card product.
+        config:
+          meta:
+            metrics:
+
+              total_products:
+                label: Total Products
+                description: Count of unique card products.
+                type: count_distinct
+
 
       - name: program_manager_id
-        description: Foreign key referencing the Program Manager responsible for the product.
+        description: Identifier of the Program Manager responsible for the product.
+
 
       - name: product_name
-        description: Business-friendly name of the payment card product.
+        description: Business name of the card product.
+
 
       - name: product_type
-        description: Type of payment product, such as Debit, Credit, Prepaid, or Virtual.
+        description: Type of card product such as Debit, Credit, Prepaid, or Virtual.
+
 
       - name: card_network
-        description: Payment network through which the card is processed, such as Visa or Mastercard.
+        description: Payment network used by the product, such as Visa or Mastercard.
+
 
       - name: card_type
-        description: Card segment or category, for example Consumer or Business.
+        description: Card category such as Consumer, Business, or Corporate.
+
 
       - name: currency
-        description: Primary settlement and billing currency supported by the product.
+        description: Primary currency supported by the product.
+
 
       - name: country
-        description: Country where the product is marketed or issued.
+        description: Country where the product is offered or issued.
+
 
       - name: monthly_fee
-        description: Monthly maintenance or subscription fee charged for the product.
+        description: Monthly subscription or maintenance fee charged for the product.
+        config:
+          meta:
+            metrics:
+
+              total_monthly_fees:
+                label: Total Monthly Fees
+                description: Sum of monthly fees across all products.
+                type: sum
+
+
+              average_monthly_fee:
+                label: Average Monthly Fee
+                description: Average monthly fee across products.
+                type: average
+
 
       - name: interchange_rate
-        description: Interchange rate associated with transactions processed on the product.
+        description: Interchange percentage applied to transactions for this product.
+        config:
+          meta:
+            metrics:
+
+              average_interchange_rate:
+                label: Average Interchange Rate
+                description: Average interchange rate across products.
+                type: average
+
+
+              maximum_interchange_rate:
+                label: Highest Interchange Rate
+                description: Maximum interchange rate configured for a product.
+                type: max
+
 
       - name: launch_date
-        description: Date the product was launched and made available to customers.
+        description: Date the product was launched.
+
 
       - name: status
-        description: Current operational status of the product, such as Active or Retired.
+        description: Current product status such as Active or Retired.
+
 
       - name: created_at
-        description: Timestamp when the product record was initially created in the source system.
+        description: Timestamp when the product record was created.

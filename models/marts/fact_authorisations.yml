@@ -1,75 +1,224 @@
 version: 2
 
 models:
-  - name: fact_authorisations
+
+  - name: fct_authorisations
+
     description: >
-      Fact table containing all card authorization requests processed by the
-      issuer platform. Each record represents a single authorization attempt,
-      regardless of whether it was approved or declined. The table captures
-      transaction details, merchant information, authorization outcomes,
-      fraud indicators, and payment channel attributes. This model is used
-      to analyze authorization volumes, approval rates, fraud trends,
-      merchant performance, and customer transaction behavior.
-    
-    config:
-      meta:
-        primary_key: authorisation_id
-        joins:
-          - join: fact_transactions
-            type: inner
-            sql_on: ${fact_authorisations.authorisation_id} = ${fact_transactions.authorisation_id}
+      Fact table containing all card authorization attempts processed by the
+      issuer platform. Each record represents a single authorization request,
+      including approved and declined attempts. This table supports analysis
+      of authorization volume, approval performance, fraud monitoring,
+      transaction channels, merchant behavior, and customer payment activity.
+
 
     columns:
+
+
       - name: authorisation_id
+
         description: Unique identifier for the authorization request.
 
+        config:
+          meta:
+            metrics:
+
+
+              total_authorisations:
+                label: Total Authorisations
+                description: Count of unique authorization requests.
+                type: count_distinct
+
+
+
+              approved_authorisations:
+                label: Approved Authorisations
+                description: Count of approved authorization requests.
+                type: count_distinct
+
+                filters:
+
+                  - approved_flag: true
+
+
+
+              declined_authorisations:
+                label: Declined Authorisations
+                description: Count of declined authorization requests.
+                type: count_distinct
+
+                filters:
+
+                  - approved_flag: false
+
+
+
+
       - name: card_id
-        description: Foreign key referencing the card used for the authorization.
+
+        description: Identifier of the card used for the authorization.
+
+        config:
+          meta:
+            metrics:
+
+
+              active_authorisation_cards:
+                label: Cards With Authorisations
+                description: Number of unique cards that generated authorization requests.
+                type: count_distinct
+
+
+
 
       - name: customer_id
-        description: Unique identifier for the customer who initiated the authorization.
+
+        description: Identifier of the customer who initiated the authorization.
+
+        config:
+          meta:
+            metrics:
+
+
+              customers_with_authorisations:
+                label: Customers With Authorisations
+                description: Number of unique customers generating authorization requests.
+                type: count_distinct
+
+
+
 
       - name: merchant_id
-        description: Identifier of the merchant where the authorization was attempted.
+
+        description: Identifier of the merchant where authorization occurred.
+
+
+
 
       - name: authorisation_date
-        description: Calendar date on which the authorization request was processed.
+
+        description: Date when authorization request was processed.
+
+
+
 
       - name: authorisation_timestamp
-        description: Exact timestamp when the authorization request was received.
+
+        description: Timestamp when authorization request was received.
+
+
+
 
       - name: merchant_category
-        description: Merchant Category Code (MCC) grouping or business category of the merchant, such as Grocery, Travel, Retail, or Electronics.
+
+        description: Merchant business category where transaction occurred.
+
+
+
 
       - name: country
-        description: Country where the authorization transaction occurred.
+
+        description: Country where authorization occurred.
+
+
+
 
       - name: currency
-        description: Currency in which the authorization amount was requested.
+
+        description: Currency of the authorization request.
+
+
+
 
       - name: amount
-        description: Monetary amount requested during the authorization.
+
+        description: Authorization amount requested.
+
+        config:
+          meta:
+            metrics:
+
+
+              total_authorisation_amount:
+                label: Total Authorisation Amount
+                description: Total monetary value of authorization requests.
+                type: sum
+
+
+              average_authorisation_amount:
+                label: Average Authorisation Amount
+                description: Average authorization amount.
+                type: average
+
+
+
 
       - name: response_code
-        description: ISO or network response code returned by the issuer indicating the authorization outcome.
+
+        description: Payment network response code returned for the authorization.
+
+
+
 
       - name: approved_flag
-        description: Indicates whether the authorization request was approved.
+
+        description: Indicates whether the authorization was approved.
+
+
+
 
       - name: decline_reason
-        description: Reason the authorization was declined, if applicable.
+
+        description: Reason for authorization decline when applicable.
+
+
+
 
       - name: fraud_score
-        description: Internal fraud risk score assigned to the authorization transaction.
+
+        description: Fraud risk score assigned to the authorization.
+
+        config:
+          meta:
+            metrics:
+
+
+              average_fraud_score:
+                label: Average Fraud Score
+                description: Average fraud score across authorization requests.
+                type: average
+
+
+
+              maximum_fraud_score:
+                label: Highest Fraud Score
+                description: Highest fraud score observed.
+                type: max
+
+
+
 
       - name: channel
-        description: Channel through which the authorization originated, such as POS, E-commerce, ATM, or Mobile.
+
+        description: Channel where authorization originated, such as POS, Ecommerce, ATM, or Mobile.
+
+
+
 
       - name: entry_mode
-        description: Card entry method used during the transaction, such as Chip, Contactless, Magnetic Stripe, or Manual Entry.
+
+        description: Method used to capture card information, such as Chip, Contactless, or Manual.
+
+
+
 
       - name: device_type
-        description: Device used to initiate the transaction, such as Physical Terminal, Mobile Device, or Web Browser.
+
+        description: Device used to initiate the authorization request.
+
+
+
 
       - name: created_at
-        description: Timestamp when the authorization record was created in the source system.
+
+        description: Timestamp when authorization record was created.
