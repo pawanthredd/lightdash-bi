@@ -11,6 +11,7 @@ models:
     
     config:
       meta:
+        primary_key: bin_sponsor_id
         joins:
           - join: dim_program_manager
             type: inner
