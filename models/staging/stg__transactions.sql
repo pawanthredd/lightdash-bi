@@ -1,0 +1,22 @@
+SELECT
+    transaction_id,
+    authorisation_id,
+    card_id,
+    customer_id,
+    merchant_id,
+    transaction_date,
+    settlement_date,
+    merchant_category,
+    country,
+    currency,
+    transaction_amount,
+    settlement_amount,
+    transaction_status,
+    interchange_rate,
+    interchange_revenue,
+    processor_fee,
+    fx_fee,
+    issuer_revenue,
+    net_revenue,
+    created_at
+FROM {{ source('raw', 'transactions') }}
