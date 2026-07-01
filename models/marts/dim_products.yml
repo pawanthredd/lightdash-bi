@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: >
+      Dimension table containing payment card product information offered by
+      Program Managers. Each record represents a unique card product and
+      includes details such as product type, card network, card category,
+      supported currency, geographic market, pricing, and interchange rates.
+      This table is used to analyze product performance, revenue, card issuance,
+      and portfolio composition.
+
+    columns:
+      - name: product_id
+        description: Unique identifier for the payment card product.
+
+      - name: program_manager_id
+        description: Foreign key referencing the Program Manager responsible for the product.
+
+      - name: product_name
+        description: Business-friendly name of the payment card product.
+
+      - name: product_type
+        description: Type of payment product, such as Debit, Credit, Prepaid, or Virtual.
+
+      - name: card_network
+        description: Payment network through which the card is processed, such as Visa or Mastercard.
+
+      - name: card_type
+        description: Card segment or category, for example Consumer or Business.
+
+      - name: currency
+        description: Primary settlement and billing currency supported by the product.
+
+      - name: country
+        description: Country where the product is marketed or issued.
+
+      - name: monthly_fee
+        description: Monthly maintenance or subscription fee charged for the product.
+
+      - name: interchange_rate
+        description: Interchange rate associated with transactions processed on the product.
+
+      - name: launch_date
+        description: Date the product was launched and made available to customers.
+
+      - name: status
+        description: Current operational status of the product, such as Active or Retired.
+
+      - name: created_at
+        description: Timestamp when the product record was initially created in the source system.

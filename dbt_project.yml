@@ -40,7 +40,9 @@ models:
     staging:
       +materialized: table
       +schema: staging
+      +tags: ['staging']
     
     marts:
       +materialized: table
       +schema: marts
+      +tags: ['bi']
