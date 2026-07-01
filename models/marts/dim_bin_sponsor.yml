@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: dim_bin_sponsor
+    description: >
+      Dimension table containing information about BIN Sponsors. A BIN Sponsor
+      is the financial institution that owns one or more Bank Identification
+      Numbers (BINs) and sponsors one or more program managers. This table
+      contains sponsor metadata, geographic information, risk classification,
+      onboarding details, and commercial attributes.
+
+    columns:
+      - name: bin_sponsor_id
+        description: Unique identifier for the BIN Sponsor.
+
+      - name: sponsor_name
+        description: Official name of the BIN Sponsor organization.
+
+      - name: sponsor_code
+        description: Short unique business code used to identify the BIN Sponsor.
+
+      - name: headquarters_country
+        description: Country where the BIN Sponsor's headquarters is located.
+
+      - name: region
+        description: Geographic region in which the BIN Sponsor primarily operates (for example, North America, Europe, APAC, or Middle East).
+
+      - name: risk_tier
+        description: Risk classification assigned to the BIN Sponsor based on internal compliance and operational risk assessments.
+
+      - name: onboarding_date
+        description: Date the BIN Sponsor was onboarded onto the issuer processing platform.
+
+      - name: annual_fee
+        description: Annual platform or sponsorship fee charged to the BIN Sponsor.
+
+      - name: active_flag
+        description: Indicates whether the BIN Sponsor is currently active on the platform.
+
+      - name: created_at
+        description: Timestamp when the BIN Sponsor record was initially created in the source system.
