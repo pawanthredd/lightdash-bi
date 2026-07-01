@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: fact_authorisations
+    description: >
+      Fact table containing all card authorization requests processed by the
+      issuer platform. Each record represents a single authorization attempt,
+      regardless of whether it was approved or declined. The table captures
+      transaction details, merchant information, authorization outcomes,
+      fraud indicators, and payment channel attributes. This model is used
+      to analyze authorization volumes, approval rates, fraud trends,
+      merchant performance, and customer transaction behavior.
+
+    columns:
+      - name: authorisation_id
+        description: Unique identifier for the authorization request.
+
+      - name: card_id
+        description: Foreign key referencing the card used for the authorization.
+
+      - name: customer_id
+        description: Unique identifier for the customer who initiated the authorization.
+
+      - name: merchant_id
+        description: Identifier of the merchant where the authorization was attempted.
+
+      - name: authorisation_date
+        description: Calendar date on which the authorization request was processed.
+
+      - name: authorisation_timestamp
+        description: Exact timestamp when the authorization request was received.
+
+      - name: merchant_category
+        description: Merchant Category Code (MCC) grouping or business category of the merchant, such as Grocery, Travel, Retail, or Electronics.
+
+      - name: country
+        description: Country where the authorization transaction occurred.
+
+      - name: currency
+        description: Currency in which the authorization amount was requested.
+
+      - name: amount
+        description: Monetary amount requested during the authorization.
+
+      - name: response_code
+        description: ISO or network response code returned by the issuer indicating the authorization outcome.
+
+      - name: approved_flag
+        description: Indicates whether the authorization request was approved.
+
+      - name: decline_reason
+        description: Reason the authorization was declined, if applicable.
+
+      - name: fraud_score
+        description: Internal fraud risk score assigned to the authorization transaction.
+
+      - name: channel
+        description: Channel through which the authorization originated, such as POS, E-commerce, ATM, or Mobile.
+
+      - name: entry_mode
+        description: Card entry method used during the transaction, such as Chip, Contactless, Magnetic Stripe, or Manual Entry.
+
+      - name: device_type
+        description: Device used to initiate the transaction, such as Physical Terminal, Mobile Device, or Web Browser.
+
+      - name: created_at
+        description: Timestamp when the authorization record was created in the source system.

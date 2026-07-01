@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: dim_cards
+    description: >
+      Dimension table containing card-level information for all issued payment
+      cards. Each record represents a unique card associated with a product and
+      customer. The table includes card lifecycle information, customer
+      demographics, credit attributes, wallet adoption, KYC status, and risk
+      indicators used for issuer analytics and reporting.
+
+    columns:
+      - name: card_id
+        description: Unique identifier for the payment card.
+
+      - name: product_id
+        description: Foreign key referencing the card product associated with the card.
+
+      - name: customer_id
+        description: Unique identifier for the cardholder. A customer may own multiple cards.
+
+      - name: masked_pan
+        description: Masked Primary Account Number (PAN) displayed for reporting and customer service purposes.
+
+      - name: card_token
+        description: Tokenized representation of the card used for secure digital transactions.
+
+      - name: country
+        description: Country where the card was issued.
+
+      - name: issue_date
+        description: Date the card was issued to the customer.
+
+      - name: activation_date
+        description: Date the card was activated by the customer.
+
+      - name: expiry_date
+        description: Date the card expires.
+
+      - name: card_status
+        description: Current lifecycle status of the card (for example Active, Blocked, Expired, Lost, or Stolen).
+
+      - name: wallet_enabled
+        description: Indicates whether the card has been enabled for use with a digital wallet.
+
+      - name: wallet_provider
+        description: Digital wallet provider associated with the card, such as Apple Pay or Google Pay.
+
+      - name: risk_score
+        description: Internal risk score assigned to the cardholder or card based on fraud and risk assessment models.
+
+      - name: credit_limit
+        description: Maximum credit limit assigned to the card. Applicable primarily to credit card products.
+
+      - name: available_balance
+        description: Current available balance or remaining available credit on the card.
+
+      - name: monthly_income
+        description: Reported monthly income of the cardholder.
+
+      - name: customer_age
+        description: Age of the cardholder.
+
+      - name: customer_segment
+        description: Business segment assigned to the customer, such as Mass Market, Affluent, SME, or Corporate.
+
+      - name: occupation
+        description: Occupation or employment category of the cardholder.
+
+      - name: kyc_status
+        description: Current Know Your Customer (KYC) verification status for the cardholder.
+
+      - name: created_at
+        description: Timestamp when the card record was initially created in the source system.

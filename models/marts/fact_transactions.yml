@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: fact_transactions
+    description: >
+      Fact table containing all settled financial transactions resulting from
+      approved card authorizations. Each record represents a completed financial
+      transaction and includes settlement information, transaction amounts,
+      revenue components, processing fees, and profitability metrics. This table
+      is the primary fact table for financial reporting, issuer revenue analysis,
+      forecasting, and transaction performance dashboards.
+
+    columns:
+      - name: transaction_id
+        description: Unique identifier for the financial transaction.
+
+      - name: authorisation_id
+        description: Foreign key referencing the authorization from which the transaction originated.
+
+      - name: card_id
+        description: Foreign key referencing the payment card used for the transaction.
+
+      - name: customer_id
+        description: Unique identifier for the customer who performed the transaction.
+
+      - name: merchant_id
+        description: Identifier of the merchant where the transaction occurred.
+
+      - name: transaction_date
+        description: Date on which the transaction was authorized.
+
+      - name: settlement_date
+        description: Date on which the transaction was settled with the payment network.
+
+      - name: merchant_category
+        description: Merchant Category Code (MCC) grouping or business category of the merchant, such as Grocery, Retail, Travel, or Electronics.
+
+      - name: country
+        description: Country where the transaction took place.
+
+      - name: currency
+        description: Currency in which the transaction was processed.
+
+      - name: transaction_amount
+        description: Original monetary amount of the transaction.
+
+      - name: settlement_amount
+        description: Final amount settled after transaction processing.
+
+      - name: transaction_status
+        description: Current settlement status of the transaction, such as Settled, Reversed, or Pending.
+
+      - name: interchange_rate
+        description: Percentage interchange rate applied to calculate interchange revenue.
+
+      - name: interchange_revenue
+        description: Revenue earned from interchange fees for processing the transaction.
+
+      - name: processor_fee
+        description: Processing fee charged by the payment processor for handling the transaction.
+
+      - name: fx_fee
+        description: Foreign exchange fee charged for cross-border or multi-currency transactions.
+
+      - name: issuer_revenue
+        description: Total gross revenue earned by the issuer from the transaction before deducting processing costs.
+
+      - name: net_revenue
+        description: Net revenue earned from the transaction after deducting processor fees and incorporating applicable revenue components.
+
+      - name: created_at
+        description: Timestamp when the transaction record was created in the source system.
