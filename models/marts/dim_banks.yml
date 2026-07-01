@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: banks
+    description: "Reference table containing bank information, sponsor names, country, and status."
+
+    columns:
+      - name: bank_id
+        description: "Unique identifier for the bank."
+
+      - name: bank_name
+        description: "Name of the bank."
+
+      - name: sponsor_name
+        description: "Name of the sponsoring bank or financial institution."
+
+      - name: country
+        description: "Country where the bank operates."
+
+      - name: status
+        description: "Current status of the bank."
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Active
+                - Inactive
