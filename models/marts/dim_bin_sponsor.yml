@@ -8,6 +8,13 @@ models:
       Numbers (BINs) and sponsors one or more program managers. This table
       contains sponsor metadata, geographic information, risk classification,
       onboarding details, and commercial attributes.
+    
+    config:
+      meta:
+        joins:
+          - join: program_manager
+            type: inner
+            sql_on: ${dim_bin_sponsor.bin_sponsor_id} = ${dim_program_manager.bin_sponsor_id}
 
     columns:
       - name: bin_sponsor_id
