@@ -12,7 +12,7 @@ models:
     config:
       meta:
         joins:
-          - join: program_manager
+          - join: dim_program_manager
             type: inner
             sql_on: ${dim_bin_sponsor.bin_sponsor_id} = ${dim_program_manager.bin_sponsor_id}
 
