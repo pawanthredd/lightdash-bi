@@ -10,14 +10,6 @@ models:
       geographic, operational, and growth-related attributes that support
       portfolio and issuer performance analysis.
     
-    config:
-      meta:
-        primary_key: program_manager_id
-        joins:
-          - join: dim_products
-            type: inner
-            sql_on: ${dim_program_manager.program_manager_id} = ${dim_products.program_manager_id}
-
     columns:
       - name: program_manager_id
         description: Unique identifier for the Program Manager.
