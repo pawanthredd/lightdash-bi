@@ -1,3 +1,8 @@
+{{
+    config(
+        tags=['bi']
+    )
+}}
 SELECT
     bank_id,
     bank_name,
