@@ -14,28 +14,28 @@ models:
         primary_key: bin_sponsor_id
         joins:
           - join: dim_program_manager
-            type: inner
+            type: left
             sql_on: ${dim_bin_sponsor.bin_sponsor_id} = ${dim_program_manager.bin_sponsor_id}
           
           - join: dim_products
-            type: inner
+            type: left
             sql_on: ${dim_program_manager.program_manager_id} = ${dim_products.program_manager_id}
           
           - join: dim_cards
-            type: inner
+            type: left
             sql_on: ${dim_products.product_id} = ${dim_cards.product_id}
           
           - join: fact_authorisations
-            type: inner
+            type: left
             sql_on: ${dim_cards.card_id} = ${fact_authorisations.card_id}
           
           - join: fact_transactions
-            type: inner
+            type: left
             alias: card_transaction
             sql_on: ${dim_cards.card_id} = ${fact_transactions.card_id}
           
           - join: fact_transactions
-            type: inner
+            type: left
             alias: authorisation_transaction
             sql_on: ${fact_authorisations.authorisation_id} = ${fact_transactions.authorisation_id}
 
