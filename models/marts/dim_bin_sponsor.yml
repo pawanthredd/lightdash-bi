@@ -11,6 +11,30 @@ models:
       tier, onboarding details, operational status, and risk classification.
       It is commonly joined with Program Managers and Products to analyze issuer
       portfolios, sponsor performance, and regional distribution.
+    
+    config:
+      meta:
+        primary_key: bin_sponsor_id
+        joins:
+          - join: dim_program_manager
+            type: left
+            sql_on: ${dim_bin_sponsor.bin_sponsor_id} = ${dim_program_manager.bin_sponsor_id}
+          
+          - join: dim_products
+            type: left
+            sql_on: ${dim_program_manager.program_manager_id} = ${dim_products.program_manager_id}
+          
+          - join: dim_cards
+            type: left
+            sql_on: ${dim_products.product_id} = ${dim_cards.product_id}
+          
+          - join: fact_authorisations
+            type: left
+            sql_on: ${dim_cards.card_id} = ${fact_authorisations.card_id}
+
+          - join: fact_transactions
+            type: left
+            sql_on: ${fact_authorisations.authorisation_id} = ${fact_transactions.authorisation_id}
 
     columns:
       - name: bin_sponsor_id

@@ -1,3 +1,8 @@
+{{
+    config(
+        tags=['bi']
+    )
+}}
 select
     bin_sponsor_id,
     bin_sponsor_name,
