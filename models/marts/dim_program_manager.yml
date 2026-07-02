@@ -3,79 +3,39 @@ version: 2
 models:
   - name: dim_program_manager
     description: >
-      Dimension table containing information about Program Managers operating
-      under BIN Sponsors. A Program Manager is responsible for managing one or
-      more payment card products, customer acquisition, compliance processes,
-      and day-to-day program operations. This table includes organizational,
-      geographic, operational, and growth-related attributes that support
-      portfolio and issuer performance analysis.
-    
+      Dimension table containing Program Manager information within the issuer
+      processing platform. A Program Manager is responsible for designing,
+      managing, and operating card programs under a BIN Sponsor.
+
     columns:
       - name: program_manager_id
-        description: Unique identifier for the Program Manager.
+        description: Unique identifier assigned to the Program Manager.
+
         config:
           meta:
             metrics:
               total_program_managers:
                 label: Total Program Managers
-                description:  Number of unique Program Managers.
+                description: Number of Program Managers.
                 type: count_distinct
 
+      - name: program_manager_name
+        description: Official business name of the Program Manager.
+
       - name: bin_sponsor_id
-        description: Foreign key referencing the BIN Sponsor that sponsors the Program Manager.
+        description: Identifier of the BIN Sponsor supporting the Program Manager.
 
-      - name: program_name
-        description: Business name of the Program Manager or card program.
+      - name: industry_vertical
+        description: Industry segment served by the Program Manager.
 
-      - name: industry
-        description: Primary industry or business sector served by the Program Manager, such as Fintech, Banking, Retail, or Travel.
+      - name: country_code
+        description: ISO country code of the Program Manager.
 
-      - name: country
-        description: Country where the Program Manager primarily operates.
-
-      - name: launch_date
-        description: Date the Program Manager or card program was launched.
-
-      - name: active_customers
-        description: Current number of active customers enrolled in the program.
-        config:
-          meta:
-            metrics:
-              total_active_customers:
-                label: Total Active Customers
-                description:  Total active customers across all Program Managers.
-                type: sum
-              
-              average_active_customers:
-                label: Average Active Customers
-                description: Average number of active customers per Program Manager.
-                type: average
-              
-              max_active_customers:
-                label: Largest Customer Base
-                description: Highest active customer count for a single Program Manager.
-                type: max
-
-      - name: monthly_growth_rate
-        description: Average monthly customer growth rate for the program, expressed as a percentage.
-        config:
-          meta:
-            metrics:
-              average_growth_rate:
-                label: Average Growth Rate
-                description: Average monthly customer growth rate across all Program Managers.
-                type: average
-
-              highest_growth_rate:
-                label: Highest Growth Rate
-                description: Highest monthly growth rate among Program Managers.
-                type: max
-
-      - name: kyc_provider
-        description: Third-party Know Your Customer (KYC) provider used for customer identity verification.
+      - name: onboarded_date
+        description: Date Program Manager was onboarded.
 
       - name: status
-        description: Current operational status of the Program Manager, such as Active, Suspended, or Retired.
+        description: Current operational status.
 
-      - name: created_at
-        description: Timestamp when the Program Manager record was initially created in the source system.
+      - name: fee_tier
+        description: Commercial pricing tier assigned to Program Manager.

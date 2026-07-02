@@ -9,90 +9,40 @@ models:
       interchange configuration, and lifecycle information.
 
     columns:
-
       - name: product_id
         description: Unique identifier for the card product.
+
         config:
           meta:
             metrics:
-
               total_products:
                 label: Total Products
                 description: Count of unique card products.
                 type: count_distinct
 
+      - name: product_name
+        description: Business name of the card product.
 
       - name: program_manager_id
         description: Identifier of the Program Manager responsible for the product.
 
-
-      - name: product_name
-        description: Business name of the card product.
-
-
       - name: product_type
-        description: Type of card product such as Debit, Credit, Prepaid, or Virtual.
-
+        description: Type of card product such as Debit, Credit, Prepaid, or Virtual Card.
 
       - name: card_network
-        description: Payment network used by the product, such as Visa or Mastercard.
+        description: Payment network used by the product such as Visa or Mastercard.
 
-
-      - name: card_type
-        description: Card category such as Consumer, Business, or Corporate.
-
+      - name: form_factor
+        description: Physical or digital representation of the payment card.
 
       - name: currency
         description: Primary currency supported by the product.
 
-
-      - name: country
-        description: Country where the product is offered or issued.
-
-
-      - name: monthly_fee
-        description: Monthly subscription or maintenance fee charged for the product.
-        config:
-          meta:
-            metrics:
-
-              total_monthly_fees:
-                label: Total Monthly Fees
-                description: Sum of monthly fees across all products.
-                type: sum
-
-
-              average_monthly_fee:
-                label: Average Monthly Fee
-                description: Average monthly fee across products.
-                type: average
-
-
-      - name: interchange_rate
-        description: Interchange percentage applied to transactions for this product.
-        config:
-          meta:
-            metrics:
-
-              average_interchange_rate:
-                label: Average Interchange Rate
-                description: Average interchange rate across products.
-                type: average
-
-
-              maximum_interchange_rate:
-                label: Highest Interchange Rate
-                description: Maximum interchange rate configured for a product.
-                type: max
-
-
       - name: launch_date
         description: Date the product was launched.
 
-
       - name: status
-        description: Current product status such as Active or Retired.
+        description: Current product status.
 
-
-      - name: created_at
-        description: Timestamp when the product record was created.
+      - name: target_segment
+        description: Intended customer segment for the product.

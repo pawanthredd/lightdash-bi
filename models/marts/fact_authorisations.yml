@@ -1,224 +1,81 @@
 version: 2
 
 models:
-
   - name: fact_authorisations
-
     description: >
-      Fact table containing all card authorization attempts processed by the
-      issuer platform. Each record represents a single authorization request,
-      including approved and declined attempts. This table supports analysis
-      of authorization volume, approval performance, fraud monitoring,
-      transaction channels, merchant behavior, and customer payment activity.
-
+      Card authorisation events captured before settlement.
 
     columns:
-
-
       - name: authorisation_id
-
-        description: Unique identifier for the authorization request.
+        description: Unique authorisation identifier.
 
         config:
           meta:
             metrics:
-
-
               total_authorisations:
                 label: Total Authorisations
-                description: Count of unique authorization requests.
+                description: Number of authorisations.
                 type: count_distinct
-
-
-
-              approved_authorisations:
-                label: Approved Authorisations
-                description: Count of approved authorization requests.
-                type: count_distinct
-
-                filters:
-
-                  - approved_flag: true
-
-
-
-              declined_authorisations:
-                label: Declined Authorisations
-                description: Count of declined authorization requests.
-                type: count_distinct
-
-                filters:
-
-                  - approved_flag: false
-
-
-
 
       - name: card_id
+        description: Card used for the authorisation.
 
-        description: Identifier of the card used for the authorization.
+      - name: product_id
+        description: Product linked to the authorisation.
 
-        config:
-          meta:
-            metrics:
-
-
-              active_authorisation_cards:
-                label: Cards With Authorisations
-                description: Number of unique cards that generated authorization requests.
-                type: count_distinct
-
-
-
-
-      - name: customer_id
-
-        description: Identifier of the customer who initiated the authorization.
-
-        config:
-          meta:
-            metrics:
-
-
-              customers_with_authorisations:
-                label: Customers With Authorisations
-                description: Number of unique customers generating authorization requests.
-                type: count_distinct
-
-
-
+      - name: authorisation_datetime
+        description: Timestamp of authorisation event.
 
       - name: merchant_id
+        description: Merchant identifier.
 
-        description: Identifier of the merchant where authorization occurred.
+      - name: merchant_name
+        description: Merchant name.
 
+      - name: mcc_code
+        description: Merchant category code.
 
+      - name: mcc_description
+        description: MCC description.
 
-
-      - name: authorisation_date
-
-        description: Date when authorization request was processed.
-
-
-
-
-      - name: authorisation_timestamp
-
-        description: Timestamp when authorization request was received.
-
-
-
-
-      - name: merchant_category
-
-        description: Merchant business category where transaction occurred.
-
-
-
-
-      - name: country
-
-        description: Country where authorization occurred.
-
-
-
-
-      - name: currency
-
-        description: Currency of the authorization request.
-
-
-
-
-      - name: amount
-
-        description: Authorization amount requested.
-
-        config:
-          meta:
-            metrics:
-
-
-              total_authorisation_amount:
-                label: Total Authorisation Amount
-                description: Total monetary value of authorization requests.
-                type: sum
-
-
-              average_authorisation_amount:
-                label: Average Authorisation Amount
-                description: Average authorization amount.
-                type: average
-
-
-
-
-      - name: response_code
-
-        description: Payment network response code returned for the authorization.
-
-
-
-
-      - name: approved_flag
-
-        description: Indicates whether the authorization was approved.
-
-
-
-
-      - name: decline_reason
-
-        description: Reason for authorization decline when applicable.
-
-
-
-
-      - name: fraud_score
-
-        description: Fraud risk score assigned to the authorization.
-
-        config:
-          meta:
-            metrics:
-
-
-              average_fraud_score:
-                label: Average Fraud Score
-                description: Average fraud score across authorization requests.
-                type: average
-
-
-
-              maximum_fraud_score:
-                label: Highest Fraud Score
-                description: Highest fraud score observed.
-                type: max
-
-
-
+      - name: merchant_country
+        description: Merchant country.
 
       - name: channel
+        description: Channel of transaction.
 
-        description: Channel where authorization originated, such as POS, Ecommerce, ATM, or Mobile.
+      - name: pos_entry_mode
+        description: POS entry mode.
 
+      - name: auth_amount
+        description: Authorised amount.
 
+        config:
+          meta:
+            metrics:
+              total_auth_amount:
+                label: Total Auth Amount
+                description: Sum of authorised amounts.
+                type: sum
 
+              avg_auth_amount:
+                label: Average Auth Amount
+                description: Average authorisation amount.
+                type: average
 
-      - name: entry_mode
+              max_auth_amount:
+                label: Max Auth Amount
+                description: Maximum authorisation amount.
+                type: max
 
-        description: Method used to capture card information, such as Chip, Contactless, or Manual.
+      - name: currency
+        description: Currency of authorisation.
 
+      - name: auth_response_code
+        description: Response code.
 
+      - name: auth_status
+        description: Approval status.
 
-
-      - name: device_type
-
-        description: Device used to initiate the authorization request.
-
-
-
-
-      - name: created_at
-
-        description: Timestamp when authorization record was created.
+      - name: decline_reason
+        description: Reason for decline.

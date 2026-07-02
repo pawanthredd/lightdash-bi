@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: dim_bin_sponsor_
+    description: >
+      Dimension table containing information about BIN Sponsors. A BIN Sponsor
+      is the financial institution that owns one or more Bank Identification
+      Numbers (BINs) and sponsors one or more program managers. This table
+      contains sponsor metadata, geographic information, risk classification,
+      onboarding details, and commercial attributes.
+    
+    config:
+      meta:
+        primary_key: bin_sponsor_id
+        joins:
+          - join: dim_program_manager
+            type: left
+            sql_on: ${dim_bin_sponsor.bin_sponsor_id} = ${dim_program_manager.bin_sponsor_id}
+          
+          - join: dim_products
+            type: left
+            sql_on: ${dim_program_manager.program_manager_id} = ${dim_products.program_manager_id}
+          
+          - join: dim_cards
+            type: left
+            sql_on: ${dim_products.product_id} = ${dim_cards.product_id}
+          
+          - join: fact_authorisations
+            type: left
+            sql_on: ${dim_cards.card_id} = ${fact_authorisations.card_id}
+          
+          - join: fact_transactions
+            type: left
+            alias: card_transaction
+            sql_on: ${dim_cards.card_id} = ${fact_transactions.card_id}
+          
+          - join: fact_transactions
+            type: left
+            alias: authorisation_transaction
+            sql_on: ${fact_authorisations.authorisation_id} = ${fact_transactions.authorisation_id}
+
+    columns:
+      - name: bin_sponsor_id
+        description: Unique identifier for the BIN Sponsor.
+        config:
+          meta:
+            metrics:
+              total_bin_sponsors:
+                label: Total BIN Sponsors
+                type: count_distinct
+
+      - name: sponsor_name
+        description: Official name of the BIN Sponsor organization.
+
+      - name: sponsor_code
+        description: Short unique business code used to identify the BIN Sponsor.
+
+      - name: headquarters_country
+        description: Country where the BIN Sponsor's headquarters is located.
+
+      - name: region
+        description: Geographic region in which the BIN Sponsor primarily operates (for example, North America, Europe, APAC, or Middle East).
+
+      - name: risk_tier
+        description: Risk classification assigned to the BIN Sponsor based on internal compliance and operational risk assessments.
+
+      - name: onboarding_date
+        description: Date the BIN Sponsor was onboarded onto the issuer processing platform.
+
+      - name: annual_fee
+        description: Annual platform or sponsorship fee charged to the BIN Sponsor.
+        config:
+          meta:
+            metrics:
+              total_annual_fee:
+                label: Total Annual Fee
+                description: Total annual fees collected from BIN Sponsors.
+                type: sum
+              
+              average_annual_fee:
+                label: Average Annual Fee
+                description: Average annual fee charged to BIN Sponsors.
+                type: average
+
+      - name: active_flag
+        description: Indicates whether the BIN Sponsor is currently active on the platform.
+
+      - name: created_at
+        description: Timestamp when the BIN Sponsor record was initially created in the source system.

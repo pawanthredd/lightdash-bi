@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: landing_db
+    schema: landing_db
+
+    tables:
+      - name: bin_sponsors
+      - name: program_managers
+      - name: products
+      - name: cards
+      - name: authorisations
+      - name: transactions

@@ -1,22 +1,18 @@
-SELECT
+select
     transaction_id,
     authorisation_id,
     card_id,
-    customer_id,
-    merchant_id,
-    transaction_date,
+    product_id,
+    transaction_datetime,
     settlement_date,
-    merchant_category,
-    country,
-    currency,
+    transaction_type,
+    merchant_id,
+    mcc_code,
     transaction_amount,
-    settlement_amount,
-    transaction_status,
-    interchange_rate,
-    interchange_revenue,
-    processor_fee,
-    fx_fee,
-    issuer_revenue,
-    net_revenue,
-    created_at
-FROM {{ ref('stg__transactions') }}
+    currency,
+    interchange_amount,
+    scheme_fee_amount,
+    processor_fee_amount,
+    net_settlement_amount,
+    transaction_status
+from {{ source('landing_db', 'transactions') }}

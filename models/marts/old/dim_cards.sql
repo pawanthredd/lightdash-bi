@@ -1,0 +1,23 @@
+SELECT
+    card_id,
+    product_id,
+    customer_id,
+    masked_pan,
+    card_token,
+    country,
+    issue_date,
+    activation_date,
+    expiry_date,
+    card_status,
+    wallet_enabled,
+    wallet_provider,
+    risk_score,
+    credit_limit,
+    available_balance,
+    monthly_income,
+    customer_age,
+    customer_segment,
+    occupation,
+    kyc_status,
+    created_at
+FROM {{ ref('stg__cards') }}

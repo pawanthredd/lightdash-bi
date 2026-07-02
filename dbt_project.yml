@@ -41,7 +41,12 @@ models:
       +materialized: table
       +schema: staging
       +tags: ['staging']
+      +enabled: false
     
     marts:
       +materialized: table
       +schema: marts
+
+      old:
+        +tags: ['ignore']
+        +enabled: False

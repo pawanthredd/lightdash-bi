@@ -1,20 +1,18 @@
-SELECT
+select
     authorisation_id,
     card_id,
-    customer_id,
+    product_id,
+    authorisation_datetime,
     merchant_id,
-    authorisation_date,
-    authorisation_timestamp,
-    merchant_category,
-    country,
-    currency,
-    amount,
-    response_code,
-    approved_flag,
-    decline_reason,
-    fraud_score,
+    merchant_name,
+    mcc_code,
+    mcc_description,
+    merchant_country,
     channel,
-    entry_mode,
-    device_type,
-    created_at
-FROM {{ ref('stg__authorisations') }}
+    pos_entry_mode,
+    auth_amount,
+    currency,
+    auth_response_code,
+    auth_status,
+    decline_reason
+from {{ source('landing_db', 'authorisations') }}
