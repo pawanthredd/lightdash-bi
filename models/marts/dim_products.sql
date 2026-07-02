@@ -1,15 +1,12 @@
-SELECT
+select
     product_id,
-    program_manager_id,
     product_name,
+    program_manager_id,
     product_type,
     card_network,
-    card_type,
+    form_factor,
     currency,
-    country,
-    monthly_fee,
-    interchange_rate,
     launch_date,
     status,
-    created_at
-FROM {{ ref('stg__products') }}
+    target_segment
+from {{ source('landing_db', 'products') }}

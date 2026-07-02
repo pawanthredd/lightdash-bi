@@ -1,0 +1,180 @@
+version: 2
+
+models:
+  - name: dim_cards_
+    description: >
+      Dimension table containing card-level and customer-level information.
+      Each record represents a unique issued payment card. The table includes
+      card lifecycle information, customer attributes, wallet enablement,
+      risk indicators, credit exposure, and KYC information used for card
+      portfolio analysis and customer segmentation.
+
+    columns:
+
+      - name: card_id
+        description: Unique identifier for the payment card.
+        config:
+          meta:
+            metrics:
+
+              total_cards:
+                label: Total Cards
+                description: Count of unique issued cards.
+                type: count_distinct
+
+
+              wallet_enabled_cards:
+                label: Wallet Enabled Cards
+                description: Number of unique cards enabled for digital wallet usage.
+                type: count_distinct
+                filters:
+                  - wallet_enabled: true
+
+
+      - name: product_id
+        description: Identifier of the card product associated with the card.
+
+
+      - name: customer_id
+        description: Unique identifier of the customer who owns the card.
+        config:
+          meta:
+            metrics:
+
+              total_customers:
+                label: Total Customers
+                description: Count of unique customers owning cards.
+                type: count_distinct
+
+
+
+      - name: masked_pan
+        description: Masked card number used for display and operational purposes.
+
+
+      - name: card_token
+        description: Tokenized representation of the card used for secure processing.
+
+
+      - name: country
+        description: Country where the card was issued.
+
+
+      - name: issue_date
+        description: Date when the card was issued.
+
+
+      - name: activation_date
+        description: Date when the card was activated.
+
+
+      - name: expiry_date
+        description: Date when the card expires.
+
+
+      - name: card_status
+        description: Current lifecycle status of the card.
+
+
+
+      - name: wallet_enabled
+        description: Indicates whether the card is enabled for digital wallet usage.
+
+
+
+      - name: wallet_provider
+        description: Digital wallet provider associated with the card.
+
+
+
+      - name: risk_score
+        description: Risk score assigned to the card/customer profile.
+        config:
+          meta:
+            metrics:
+
+              average_risk_score:
+                label: Average Risk Score
+                description: Average risk score across all cards.
+                type: average
+
+
+              highest_risk_score:
+                label: Highest Risk Score
+                description: Maximum risk score across cards.
+                type: max
+
+
+
+      - name: credit_limit
+        description: Maximum credit limit assigned to the card.
+        config:
+          meta:
+            metrics:
+
+              total_credit_limit:
+                label: Total Credit Limit
+                description: Total credit exposure across all cards.
+                type: sum
+
+
+              average_credit_limit:
+                label: Average Credit Limit
+                description: Average credit limit per card.
+                type: average
+
+
+
+      - name: available_balance
+        description: Remaining available balance or available credit on the card.
+        config:
+          meta:
+            metrics:
+
+              total_available_balance:
+                label: Total Available Balance
+                description: Total available balance across all cards.
+                type: sum
+
+
+
+      - name: monthly_income
+        description: Reported monthly income of the customer.
+        config:
+          meta:
+            metrics:
+
+              average_monthly_income:
+                label: Average Monthly Income
+                description: Average customer monthly income.
+                type: average
+
+
+
+      - name: customer_age
+        description: Age of the cardholder.
+        config:
+          meta:
+            metrics:
+
+              average_customer_age:
+                label: Average Customer Age
+                description: Average age of cardholders.
+                type: average
+
+
+
+      - name: customer_segment
+        description: Customer segmentation category.
+
+
+      - name: occupation
+        description: Customer occupation category.
+
+
+      - name: kyc_status
+        description: Current customer KYC verification status.
+
+
+      - name: created_at
+        description: Timestamp when the card record was created.

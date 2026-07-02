@@ -1,13 +1,10 @@
-SELECT
+select
     program_manager_id,
+    program_manager_name,
     bin_sponsor_id,
-    program_name,
-    industry,
-    country,
-    launch_date,
-    active_customers,
-    monthly_growth_rate,
-    kyc_provider,
+    industry_vertical,
+    country_code,
+    onboarded_date,
     status,
-    created_at
-FROM {{ ref('stg__program_manager') }}
+    fee_tier
+from {{ source('landing_db', 'program_managers') }}

@@ -1,18 +1,12 @@
-{{
-    config(
-        tags=['bi']
-    )
-}}
-
-SELECT
+select
     bin_sponsor_id,
-    sponsor_name,
-    sponsor_code,
-    headquarters_country,
+    bin_sponsor_name,
+    country_code,
     region,
-    risk_tier,
-    onboarding_date,
-    annual_fee,
-    active_flag,
-    created_at
-FROM {{ ref('stg__bin_sponsor') }}
+    bin_range_start,
+    bin_range_end,
+    sponsor_tier,
+    onboarded_date,
+    status,
+    risk_rating
+from {{ source('landing_db', 'bin_sponsors') }}
