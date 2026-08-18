@@ -1,0 +1,43 @@
+product_id,product_name,program_manager_id,product_type,card_network,form_factor,currency,launch_date,status,target_segment
+PRD-00001,Nova Charge Card,PM-0001,Charge Card,Mastercard,Physical & Virtual,GBP,2025-08-12,Active,SME
+PRD-00002,Nova Credit Card,PM-0001,Credit Card,Mastercard,Physical & Virtual,EUR,2026-06-12,Active,Corporate
+PRD-00003,Flux Prepaid Debit,PM-0002,Prepaid Debit,Mastercard,Physical & Virtual,EUR,2023-02-02,Active,Consumer
+PRD-00004,Orbit Credit Card,PM-0003,Credit Card,Visa,Virtual,GBP,2024-10-12,Active,Corporate
+PRD-00005,Orbit Virtual Card,PM-0003,Virtual Card,Visa,Physical & Virtual,GBP,2025-11-04,Active,Corporate
+PRD-00006,Vertex Debit Card,PM-0004,Debit Card,Visa,Physical,EUR,2025-05-20,Active,Consumer
+PRD-00007,Vertex Debit Card,PM-0004,Debit Card,Visa,Physical & Virtual,EUR,2026-02-03,Active,SME
+PRD-00008,Pulse Prepaid Debit,PM-0005,Prepaid Debit,Mastercard,Virtual,GBP,2025-01-29,Active,Consumer
+PRD-00009,Kinetic Debit Card,PM-0006,Debit Card,Visa,Physical,USD,2025-12-02,Active,SME
+PRD-00010,Kinetic Prepaid Debit,PM-0006,Prepaid Debit,Visa,Physical,USD,2024-08-20,Active,SME
+PRD-00011,Lumen Virtual Card,PM-0007,Virtual Card,Mastercard,Physical,USD,2025-09-02,Active,Corporate
+PRD-00012,Lumen Charge Card,PM-0007,Charge Card,Mastercard,Virtual,USD,2025-09-26,Active,Corporate
+PRD-00013,Drift Credit Card,PM-0008,Credit Card,Mastercard,Physical,GBP,2024-05-10,Active,Consumer
+PRD-00014,Drift Prepaid Debit,PM-0008,Prepaid Debit,Mastercard,Physical,USD,2024-09-17,Active,Corporate
+PRD-00015,Anchor Debit Card,PM-0009,Debit Card,Visa,Physical,GBP,2024-01-31,Active,Corporate
+PRD-00016,Anchor Prepaid Debit,PM-0009,Prepaid Debit,Visa,Physical,GBP,2024-07-23,Active,SME
+PRD-00017,Zephyr Debit Card,PM-0010,Debit Card,Visa,Virtual,USD,2026-01-01,Active,SME
+PRD-00018,Cobalt Debit Card,PM-0011,Debit Card,Visa,Physical & Virtual,USD,2026-01-29,Active,Corporate
+PRD-00019,Cobalt Credit Card,PM-0011,Credit Card,Visa,Virtual,EUR,2026-01-30,Active,Consumer
+PRD-00020,Sable Prepaid Debit,PM-0012,Prepaid Debit,Mastercard,Virtual,EUR,2023-10-17,Active,SME
+PRD-00021,Halo Prepaid Debit,PM-0013,Prepaid Debit,Visa,Physical,EUR,2026-01-10,Active,Corporate
+PRD-00022,Halo Virtual Card,PM-0013,Virtual Card,Visa,Physical,GBP,2026-06-16,Active,Consumer
+PRD-00023,Halo Debit Card,PM-0013,Debit Card,Mastercard,Physical,EUR,2026-04-09,Active,Consumer
+PRD-00024,Ember Credit Card,PM-0014,Credit Card,Visa,Physical,EUR,2026-02-02,Active,Corporate
+PRD-00025,Ember Prepaid Debit,PM-0014,Prepaid Debit,Visa,Physical & Virtual,USD,2025-08-20,Active,Consumer
+PRD-00026,Quartz Charge Card,PM-0015,Charge Card,Visa,Virtual,EUR,2025-11-27,Active,SME
+PRD-00027,Vantage Credit Card,PM-0016,Credit Card,Visa,Physical,EUR,2024-05-03,Active,Consumer
+PRD-00028,Vantage Credit Card,PM-0016,Credit Card,Mastercard,Virtual,EUR,2024-11-22,Active,SME
+PRD-00029,Ripple Charge Card,PM-0017,Charge Card,Visa,Virtual,GBP,2026-06-30,Active,Consumer
+PRD-00030,Ripple Debit Card,PM-0017,Debit Card,Visa,Physical & Virtual,EUR,2026-05-28,Active,Consumer
+PRD-00031,Ripple Prepaid Debit,PM-0017,Prepaid Debit,Mastercard,Physical & Virtual,USD,2026-05-20,Active,Consumer
+PRD-00032,Summit Debit Card,PM-0018,Debit Card,Visa,Physical,GBP,2025-06-05,Active,Corporate
+PRD-00033,Onyx Charge Card,PM-0019,Charge Card,Mastercard,Physical,USD,2026-01-22,Active,Consumer
+PRD-00034,Prism Debit Card,PM-0020,Debit Card,Visa,Virtual,USD,2025-10-19,Active,Corporate
+PRD-00035,Compass Virtual Card,PM-0021,Virtual Card,Visa,Physical & Virtual,USD,2025-10-31,Active,SME
+PRD-00036,Compass Charge Card,PM-0021,Charge Card,Mastercard,Virtual,GBP,2025-08-30,Active,Corporate
+PRD-00037,Nimbus Credit Card,PM-0022,Credit Card,Mastercard,Physical,GBP,2024-12-18,Active,SME
+PRD-00038,Nimbus Debit Card,PM-0022,Debit Card,Visa,Physical,USD,2024-11-09,Active,Consumer
+PRD-00039,Talon Charge Card,PM-0023,Charge Card,Mastercard,Physical,GBP,2026-01-11,Active,SME
+PRD-00040,Talon Virtual Card,PM-0023,Virtual Card,Visa,Virtual,USD,2026-06-18,Active,Corporate
+PRD-00041,Ledger Debit Card,PM-0024,Debit Card,Visa,Physical & Virtual,USD,2026-04-29,Active,SME
+PRD-00042,Ledger Prepaid Debit,PM-0024,Prepaid Debit,Visa,Virtual,GBP,2025-07-19,Active,Consumer

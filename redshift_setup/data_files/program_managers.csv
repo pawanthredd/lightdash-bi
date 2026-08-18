@@ -1,0 +1,25 @@
+program_manager_id,program_manager_name,bin_sponsor_id,industry_vertical,country_code,onboarded_date,status,fee_tier
+PM-0001,Nova Financial,BS-006,Consumer Prepaid,GB,2024-08-04,Active,Standard
+PM-0002,Flux Financial,BS-008,Marketplace Payouts,US,2021-01-05,Active,Growth
+PM-0003,Orbit Financial,BS-003,Travel & Expense,IE,2022-09-01,Active,Growth
+PM-0004,Vertex Pay,BS-002,Expense Management,US,2023-07-31,Active,Growth
+PM-0005,Pulse Money,BS-001,Corporate Cards,US,2023-02-23,Active,Enterprise
+PM-0006,Kinetic Technologies,BS-007,Student Banking,DE,2024-07-19,Active,Standard
+PM-0007,Lumen Ltd,BS-005,Gig Economy Payouts,GB,2025-06-05,Active,Enterprise
+PM-0008,Drift Money,BS-004,Corporate Cards,US,2024-03-04,Active,Standard
+PM-0009,Anchor Inc,BS-001,Travel & Expense,GB,2023-10-25,Active,Standard
+PM-0010,Zephyr Financial,BS-006,Expense Management,GB,2025-02-21,Active,Growth
+PM-0011,Cobalt Inc,BS-001,B2B Payments,IE,2025-11-03,Active,Standard
+PM-0012,Sable Inc,BS-001,Gig Economy Payouts,GB,2023-01-29,Active,Enterprise
+PM-0013,Halo Inc,BS-006,Expense Management,GB,2025-11-09,Active,Standard
+PM-0014,Ember Ltd,BS-001,Marketplace Payouts,DE,2025-06-16,Active,Growth
+PM-0015,Quartz Money,BS-006,Buy Now Pay Later,GB,2024-04-28,Active,Standard
+PM-0016,Vantage Inc,BS-005,B2B Payments,GB,2023-12-01,Active,Standard
+PM-0017,Ripple Financial,BS-002,Neobank,US,2026-03-30,Active,Growth
+PM-0018,Summit Money,BS-004,Expense Management,FR,2023-02-09,Active,Enterprise
+PM-0019,Onyx Money,BS-005,Travel & Expense,GB,2023-09-22,Active,Growth
+PM-0020,Prism Inc,BS-001,Consumer Prepaid,GB,2023-05-22,Active,Standard
+PM-0021,Compass Inc,BS-008,Student Banking,US,2025-08-20,Active,Enterprise
+PM-0022,Nimbus Ltd,BS-008,Crypto On/Off Ramp,US,2024-04-04,Active,Growth
+PM-0023,Talon Money,BS-005,Travel & Expense,GB,2025-11-27,Active,Standard
+PM-0024,Ledger Ltd,BS-004,Consumer Prepaid,US,2025-02-11,Active,Standard

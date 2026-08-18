@@ -1,0 +1,9 @@
+bin_sponsor_id,bin_sponsor_name,country_code,region,bin_range_start,bin_range_end,sponsor_tier,onboarded_date,status,risk_rating
+BS-001,Meridian Trust Bank,GB,Europe,410000,410999,Tier 2,2023-01-21,Active,Low
+BS-002,Atlas National Bank,US,North America,420000,420999,Tier 1,2020-08-06,Active,Medium
+BS-003,Solaris Community Bank,IE,Europe,430000,430999,Tier 1,2021-08-06,Active,Low
+BS-004,Beacon Federal Bank,US,North America,440000,440999,Tier 1,2021-05-23,Active,Low
+BS-005,Cascade Savings Bank,GB,Europe,450000,450999,Tier 2,2023-06-11,Active,Low
+BS-006,Ironbridge Bank plc,GB,Europe,460000,460999,Tier 2,2023-03-16,Active,High
+BS-007,Northgate Financial,LT,Europe,470000,470999,Tier 1,2024-01-25,Active,Low
+BS-008,Harborview Bank,US,North America,480000,480999,Tier 1,2020-11-05,Active,Low
